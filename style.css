@@ -455,9 +455,9 @@ p { text-wrap: pretty; }
   .hero__visual { position: relative; margin: 0 1rem; }
   .hero__img {
     min-height: auto;
-    height: 180px;
+    height: 160px;
     border-radius: 8px;
-    object-position: center 30%;
+    object-position: center 20%;
   }
   /* Badges unter dem Bild statt drauf */
   .hero__badge,
@@ -1845,40 +1845,6 @@ p { text-wrap: pretty; }
   margin-top: 1rem;
 }
 
-/* === STICKY MOBILE CTA === */
-.sticky-cta { display: none; }
-
-@media (max-width: 768px) {
-  .sticky-cta {
-    position: fixed;
-    bottom: 12px;
-    left: 12px;
-    right: 12px;
-    display: flex;
-    gap: 8px;
-    z-index: 100;
-    transform: translateY(calc(100% + 24px));
-    transition: transform 0.4s var(--ease-out);
-  }
-  .sticky-cta.is-visible { transform: translateY(0); }
-  .sticky-cta a {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.75rem;
-    color: #fff;
-    font-weight: 700;
-    font-size: 0.8125rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  }
-  .sticky-cta a:first-child { background: var(--accent); }
-  .sticky-cta a:last-child { background: #1A1815; }
-  .sticky-cta svg { width: 16px; height: 16px; fill: currentColor; }
-  .footer { padding-bottom: 5rem; }
-}
 
 /* === SCROLL-REVEAL (sanft, nicht hektisch) === */
 .reveal {
