@@ -330,11 +330,19 @@
 
     /* Responsive */
     @media (max-width: 900px) {
+      .form-hero {
+        padding: 80px 0 2rem;
+      }
+      .form-hero h1 { font-size: 1.5rem; }
+      .form-hero__sub { font-size: 0.875rem; }
+      .form-hero__back { margin-bottom: 0.75rem; }
       .form-layout {
         grid-template-columns: 1fr;
         gap: 2rem;
       }
-      .form-sidebar { position: static; order: -1; }
+      /* Formular zuerst, Sidebar darunter */
+      .form-card { order: -1; }
+      .form-sidebar { position: static; order: 1; }
       .form-row { grid-template-columns: 1fr; }
     }
 
