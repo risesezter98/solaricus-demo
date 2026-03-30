@@ -441,9 +441,10 @@ p { text-wrap: pretty; }
   .hero__sub { font-size: 0.9375rem; }
   .hero__usps li { font-size: 0.8125rem; }
   .hero__img {
-    min-height: 250px;
-    max-height: 300px;
+    min-height: auto;
+    max-height: 220px;
     border-radius: 8px;
+    object-position: center center;
   }
   .hero__badge {
     bottom: -10px;
