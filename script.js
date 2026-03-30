@@ -229,17 +229,12 @@
   });
 
   // Bei Scroll einblenden
-  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   var geoObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
-        var geoCities = entry.target.querySelectorAll('.geo-city');
-        if (reducedMotion) {
-          geoCities.forEach(function(c) { c.classList.add('visible'); });
-        } else {
-          geoCities.forEach(function(c) { c.classList.add('visible'); });
-        }
+        entry.target.querySelectorAll('.geo-city').forEach(function(c) {
+          c.classList.add('visible');
+        });
         geoObserver.unobserve(entry.target);
       }
     });
