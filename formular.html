@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Kostenlose Beratung anfragen | Solaricus</title>
+  <meta name="description" content="Anfrage fuer eine kostenlose Beratung bei Solaricus. Photovoltaik aus Kirchhain, seit 2005.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === FORMULAR-SEITE === */
+    body { background: var(--bg-hell); }
+
+    .form-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-hero {
+      background: var(--bg-dunkel);
+      color: #fff;
+      padding: clamp(100px, 12vw, 140px) 0 clamp(48px, 6vw, 72px);
+      position: relative;
+      overflow: hidden;
+    }
+    .form-hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -15%;
+      width: 55%;
+      height: 160%;
+      background:
+        repeating-conic-gradient(
+          from 0deg at 100% 0%,
+          rgba(var(--accent-rgb), 0.04) 0deg 3deg,
+          transparent 3deg 12deg
+        );
+      mask-image: radial-gradient(ellipse at 100% 0%, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 100% 0%, black 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .form-hero .container { position: relative; z-index: 1; }
+    .form-hero .kicker { color: var(--accent); }
+    .form-hero h1 {
+      color: #fff;
+      font-size: clamp(1.75rem, 1.5rem + 1.5vw, 2.5rem);
+      margin-bottom: 0.75rem;
+    }
+    .form-hero__sub {
+      color: var(--text-hell-body);
+      font-size: 1.0625rem;
+      max-width: 520px;
+    }
+    .form-hero__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-hell-gedaempft);
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      transition: color 0.3s var(--ease);
+    }
+    .form-hero__back:hover { color: #fff; }
+    .form-hero__back svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* === FORMULAR === */
+    .form-section {
+      flex: 1;
+      padding: clamp(48px, 6vw, 80px) 0;
+    }
+    .form-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .form-card {
+      background: #fff;
+      border-radius: 4px;
+      padding: clamp(2rem, 4vw, 3rem);
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    .form-card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .form-card__intro {
+      color: var(--text-body);
+      font-size: 0.9375rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Formular-Felder */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group--full {
+      grid-column: 1 / -1;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--text-dunkel);
+      margin-bottom: 0.375rem;
+      letter-spacing: 0.02em;
+    }
+    .form-label .optional {
+      font-weight: 400;
+      color: var(--text-gedaempft);
+      font-size: 0.75rem;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      color: var(--text-dunkel);
+      background: var(--bg-hell);
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.12);
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--text-gedaempft);
+    }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    /* Radio-Gruppe (Dachtyp) */
+    .form-radios {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .form-radio {
+      position: relative;
+    }
+    .form-radio input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .form-radio label {
+      display: inline-block;
+      padding: 0.625rem 1.25rem;
+      background: var(--bg-hell);
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-body);
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+    }
+    .form-radio input:checked + label {
+      background: rgba(var(--accent-rgb), 0.08);
+      border-color: var(--accent);
+      color: var(--accent-hover);
+    }
+    .form-radio label:hover {
+      border-color: rgba(var(--accent-rgb), 0.3);
+    }
+    .form-radio input:focus-visible + label {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Submit */
+    .form-submit {
+      margin-top: 0.5rem;
+    }
+    .form-submit .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 1.125rem 2rem;
+      font-size: 1rem;
+    }
+    .form-submit .microcopy {
+      text-align: center;
+    }
+
+    /* Datenschutz-Hinweis */
+    .form-privacy {
+      font-size: 0.75rem;
+      color: var(--text-gedaempft);
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+    .form-privacy a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    /* === SIDEBAR === */
+    .form-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar-card {
+      background: #fff;
+      border-radius: 4px;
+      padding: 1.75rem;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-card h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-step {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .sidebar-step:last-child { margin-bottom: 0; }
+    .sidebar-step__nr {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(var(--accent-rgb), 0.1);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8125rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .sidebar-step__text {
+      font-size: 0.875rem;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+    .sidebar-step__text strong {
+      display: block;
+      color: var(--text-dunkel);
+      font-size: 0.875rem;
+      margin-bottom: 0.125rem;
+    }
+
+    /* Kontakt-Card */
+    .sidebar-kontakt {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .sidebar-kontakt__item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-body);
+    }
+    .sidebar-kontakt__item svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--accent);
+      flex-shrink: 0;
+    }
+    .sidebar-kontakt__item a {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Google-Badge in Sidebar */
+    .sidebar-google {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-hell);
+      border-radius: 4px;
+    }
+    .sidebar-google svg { width: 24px; height: 24px; flex-shrink: 0; }
+    .sidebar-google__sterne {
+      font-size: 0.875rem;
+      color: #FBBC05;
+    }
+    .sidebar-google__sterne span {
+      font-weight: 800;
+      color: var(--text-dunkel);
+      margin-left: 0.25rem;
+    }
+    .sidebar-google__text {
+      font-size: 0.75rem;
+      color: var(--text-gedaempft);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .form-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .form-sidebar { position: static; order: -1; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* Formular-Seite braucht kein sticky mobile CTA */
+    .sticky-cta { display: none !important; }
+  </style>
+</head>
+<body>
+
+<div class="form-page">
+
+<!-- Entwurf-Banner -->
+<div class="entwurf-banner">
+  Unverbindlicher Entwurf von <a href="https://pfeifferdigital.de" target="_blank">Pfeiffer Digital</a>, kein offizielles Angebot von Solaricus
+</div>
+
+<!-- Nav -->
+<nav class="nav is-scrolled" role="navigation" aria-label="Hauptnavigation">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">Solar<span>icus</span></a>
+    <a href="tel:0642289944-5" class="nav__tel" aria-label="Anrufen">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      06422 899 44-5
+    </a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="form-hero">
+  <div class="container">
+    <a href="index.html" class="form-hero__back">
+      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      Zurück zur Startseite
+    </a>
+    <div class="kicker">Kostenlose Beratung</div>
+    <h1>Erzählen Sie uns von Ihrem Dach.</h1>
+    <p class="form-hero__sub">Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen. Kostenlos und unverbindlich.</p>
+  </div>
+</div>
+
+<!-- Formular + Sidebar -->
+<div class="form-section">
+  <div class="container form-layout">
+
+    <!-- Formular -->
+    <div class="form-card">
+      <h2>Ihre Anfrage</h2>
+      <p class="form-card__intro">Dauert nur 2 Minuten. Je mehr Sie uns verraten, desto besser können wir uns vorbereiten.</p>
+
+      <form action="#" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="vorname">Vorname</label>
+            <input class="form-input" type="text" id="vorname" name="vorname" placeholder="Max" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="nachname">Nachname</label>
+            <input class="form-input" type="text" id="nachname" name="nachname" placeholder="Mustermann" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="email">E-Mail</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="max@beispiel.de" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="telefon">Telefon <span class="optional">(optional)</span></label>
+            <input class="form-input" type="tel" id="telefon" name="telefon" placeholder="06422 ...">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="ort">Ort / PLZ</label>
+          <input class="form-input" type="text" id="ort" name="ort" placeholder="z.B. Kirchhain, 35274" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Was möchten Sie?</label>
+          <div class="form-radios">
+            <div class="form-radio">
+              <input type="radio" id="typ-neu" name="typ" value="neuanlage" checked>
+              <label for="typ-neu">Neue Anlage</label>
+            </div>
+            <div class="form-radio">
+              <input type="radio" id="typ-erweiterung" name="typ" value="erweiterung">
+              <label for="typ-erweiterung">Erweiterung</label>
+            </div>
+            <div class="form-radio">
+              <input type="radio" id="typ-reparatur" name="typ" value="reparatur">
+              <label for="typ-reparatur">Reparatur / Wartung</label>
+            </div>
+            <div class="form-radio">
+              <input type="radio" id="typ-beratung" name="typ" value="beratung">
+              <label for="typ-beratung">Erst mal beraten lassen</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="dachtyp">Dachtyp <span class="optional">(optional)</span></label>
+          <select class="form-select" id="dachtyp" name="dachtyp">
+            <option value="">Bitte wählen</option>
+            <option value="satteldach">Satteldach</option>
+            <option value="flachdach">Flachdach</option>
+            <option value="pultdach">Pultdach</option>
+            <option value="walmdach">Walmdach</option>
+            <option value="anderes">Anderes / Weiß ich nicht</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="nachricht">Ihre Nachricht <span class="optional">(optional)</span></label>
+          <textarea class="form-textarea" id="nachricht" name="nachricht" placeholder="Erzählen Sie uns kurz von Ihrem Vorhaben. Zum Beispiel: Wie groß ist Ihr Dach? Gibt es Verschattung? Was ist Ihnen wichtig?"></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn--primary">Kostenlose Beratung anfragen</button>
+          <span class="microcopy">Kostenlos und unverbindlich. Wir melden uns in 24 Stunden.</span>
+        </div>
+
+        <p class="form-privacy">
+          Mit dem Absenden stimmen Sie zu, dass wir Ihre Daten zur Bearbeitung Ihrer Anfrage verwenden.
+          <a href="https://pfeifferdigital.de/datenschutzerklaerung" target="_blank">Datenschutzerklärung</a>
+        </p>
+      </form>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="form-sidebar">
+
+      <div class="sidebar-card">
+        <h3>So geht es weiter</h3>
+        <div class="sidebar-step">
+          <div class="sidebar-step__nr">1</div>
+          <div class="sidebar-step__text">
+            <strong>Anfrage absenden</strong>
+            Dauert nur 2 Minuten.
+          </div>
+        </div>
+        <div class="sidebar-step">
+          <div class="sidebar-step__nr">2</div>
+          <div class="sidebar-step__text">
+            <strong>Wir melden uns</strong>
+            Innerhalb von 24 Stunden, per Telefon oder E-Mail.
+          </div>
+        </div>
+        <div class="sidebar-step">
+          <div class="sidebar-step__nr">3</div>
+          <div class="sidebar-step__text">
+            <strong>Vor-Ort-Beratung</strong>
+            Wir schauen uns Ihr Dach an und besprechen alles persönlich.
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Lieber direkt?</h3>
+        <div class="sidebar-kontakt">
+          <div class="sidebar-kontakt__item">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <a href="tel:0642289944-5">06422 899 44-5</a>
+          </div>
+          <div class="sidebar-kontakt__item">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <a href="mailto:email@solaricus.de">email@solaricus.de</a>
+          </div>
+          <div class="sidebar-kontakt__item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+            <span>Zur alten Seite 1a<br>35274 Kirchhain</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-google">
+          <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          <div>
+            <div class="sidebar-google__sterne">★★★★★ <span>4,7</span></div>
+            <div class="sidebar-google__text">28 Bewertungen auf Google</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__logo">Solar<span>icus</span></div>
+    <div class="footer__links">
+      <a href="index.html">Startseite</a>
+      <a href="https://pfeifferdigital.de/impressum" target="_blank">Impressum</a>
+      <a href="https://pfeifferdigital.de/datenschutzerklaerung" target="_blank">Datenschutz</a>
+    </div>
+    <div class="footer__copy">© 2025 Solaricus, Solarenergie aus dem Ohmtal</div>
+  </div>
+</footer>
+
+</div>
+
+</body>
+</html>
