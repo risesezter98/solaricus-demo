@@ -3,6 +3,28 @@
    Nav-Scroll, Reveal, Counter, FAQ, Sticky CTA
    =================================== */
 
+/* --- Burger-Menü Mobile --- */
+(function() {
+  var burger = document.querySelector('.nav__burger');
+  var links = document.querySelector('.nav__links');
+  if (!burger || !links) return;
+
+  burger.addEventListener('click', function() {
+    var isOpen = burger.classList.toggle('is-open');
+    links.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Menü schliessen bei Klick auf Link
+  links.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      burger.classList.remove('is-open');
+      links.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
 /* --- Navigation: Shrink bei Scroll --- */
 (function() {
   var nav = document.querySelector('.nav');
